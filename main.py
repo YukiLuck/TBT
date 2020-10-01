@@ -1,6 +1,8 @@
 from discord.ext.commands import Bot
 from mongoengine import connect
 from dotenv import load_dotenv
+load_dotenv()
+from tbt.utils.prefix import get_prefix
 from os import environ
 
 extensions = {
@@ -8,8 +10,7 @@ extensions = {
 }
 
 if __name__ == '__main__': 
-    load_dotenv()
-    bot = Bot(environ['DEFAULT_PREFIX'], None)
+    bot = Bot(lambda _, message: get_prefix(message.guild), None)
     connect(host=environ['MONGO_URI'])
     for key, value in extensions.items():
         for ext in value:
