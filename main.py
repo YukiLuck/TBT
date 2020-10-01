@@ -6,7 +6,7 @@ from tbt.utils.prefix import get_prefix
 from os import environ
 
 extensions = {
-    'commands': ['info']
+    'commands': ['config', 'info']
 }
 
 if __name__ == '__main__': 
