@@ -7,6 +7,8 @@ class Config(Cog):
     
     @command()
     async def prefix(self, ctx: Context, *, new_prefix):
+        if len(new_prefix) > 10:
+            return await ctx.send('The prefix can\'t be longer than 10 characters!')
         Guild(id=ctx.guild.id, prefix=new_prefix).save()
         await ctx.send('Your prefix has been successfully changed to ' + new_prefix)
 
